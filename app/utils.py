@@ -1,5 +1,18 @@
 import importlib
 import pkgutil
+from datetime import datetime
+
+from bson.objectid import ObjectId
+from pydantic import BaseConfig, BaseModel
+
+
+class AppModel(BaseModel):
+    class Config(BaseConfig):
+        allow_population_by_field_name = True
+        json_encoders = {
+            datetime: lambda input: input.isoformat(),
+            ObjectId: lambda input: str(input),
+        }
 
 
 def import_routers(package_name):
