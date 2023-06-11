@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from bson.objectid import ObjectId
 from pymongo.database import Database
 
 from ..utils.security import hash_password
@@ -26,7 +27,7 @@ class AuthRepository:
     def get_user_by_id(self, user_id: str) -> dict | None:
         user = self.database["users"].find_one(
             {
-                "_id": user_id,
+                "_id": ObjectId(user_id),
             }
         )
         return user
