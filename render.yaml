@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fastapi
+    runtime: docker
+    repo: https://github.com/atlekbai/fastapi-boilerplate.git
+    region: frankfurt
+    branch: main
+    envVars:
+      - key: MONGO_URL
+        sync: false
+  
