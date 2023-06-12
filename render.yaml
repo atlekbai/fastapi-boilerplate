@@ -2,6 +2,7 @@ services:
   - type: web
     name: fastapi
     runtime: docker
+    plan: free
     repo: https://github.com/atlekbai/fastapi-boilerplate.git
     region: frankfurt
     branch: main
