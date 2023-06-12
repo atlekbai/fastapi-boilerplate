@@ -6,19 +6,14 @@ from pymongo.database import Database
 from ..utils.security import hash_password
 
 
-class AuthUser:
-    email: str
-    password: str
-
-
 class AuthRepository:
     def __init__(self, database: Database):
         self.database = database
 
-    def create_user(self, user: AuthUser):
+    def create_user(self, user: dict):
         payload = {
-            "email": user.email,
-            "password": hash_password(user.password),
+            "email": user["email"],
+            "password": hash_password(user["password"]),
             "created_at": datetime.utcnow(),
         }
 

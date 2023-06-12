@@ -38,8 +38,6 @@ class JwtService:
 
         try:
             payload = jwt.decode(token, self.secret, algorithms=[self.algorithm])
-            print(token)
-            print(payload)
         except JWTError:
             raise InvalidToken()
 
