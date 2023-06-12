@@ -28,6 +28,6 @@ def register_user(
             detail="Email is already taken.",
         )
 
-    svc.repository.create_user(input)
+    svc.repository.create_user(input.dict())
 
     return RegisterUserResponse(email=input.email)
