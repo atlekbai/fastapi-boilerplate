@@ -14,6 +14,7 @@ fastapi = "^0.95.2"
 uvicorn= {extras = ["standard"], version = "^0.20.0"}
 python-multipart = "^0.0.6"
 pymongo = {extras = ["srv"], version = "^4.3.3"}
+orjson = "^3.9.1"
 
 
 [tool.poetry.group.dev.dependencies]
