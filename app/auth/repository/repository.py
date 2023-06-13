@@ -35,3 +35,15 @@ class AuthRepository:
             }
         )
         return user
+    
+    def change_user(self, user_id: str, input: dict):
+        data = {}
+        for t in input:
+            if not (t[1] is None):
+                data[t[0]] = t[1]
+        self.database["users"].update_one(
+            filter={"_id": ObjectId(user_id)},
+            update={
+                "$set": data
+            },
+        )
