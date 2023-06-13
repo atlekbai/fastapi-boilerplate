@@ -1,18 +1,18 @@
 version: "3.8"
 
 services:
-  # app:
-  #   build:
-  #     context: .
-  #     dockerfile: ./deploy/docker/Dockerfile.dev
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     - ./:/code
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - mongodb
+  app:
+    build:
+      context: .
+      dockerfile: ./deploy/dockerfiles/Dockerfile
+    environment:
+     - MONGOHOST=mongodb
+    volumes:
+      - ./:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
 
   mongodb:
     image: mongo:4.4.6-bionic
