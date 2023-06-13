@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 from bson.objectid import ObjectId
 from pymongo.database import Database
@@ -19,7 +20,7 @@ class AuthRepository:
 
         self.database["users"].insert_one(payload)
 
-    def get_user_by_id(self, user_id: str) -> dict | None:
+    def get_user_by_id(self, user_id: str) -> Optional[dict]:
         user = self.database["users"].find_one(
             {
                 "_id": ObjectId(user_id),
@@ -27,7 +28,7 @@ class AuthRepository:
         )
         return user
 
-    def get_user_by_email(self, email: str) -> dict | None:
+    def get_user_by_email(self, email: str) -> Optional[dict]:
         user = self.database["users"].find_one(
             {
                 "email": email,

@@ -1,7 +1,7 @@
 import importlib
 import pkgutil
 from datetime import datetime
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 from zoneinfo import ZoneInfo
 
 import orjson
@@ -9,7 +9,7 @@ from bson.objectid import ObjectId
 from pydantic import BaseModel, root_validator
 
 
-def orjson_dumps(v: Any, *, default: Callable[[Any], Any] | None) -> str:
+def orjson_dumps(v: Any, *, default: Optional[Callable[[Any], Any]]) -> str:
     return orjson.dumps(v, default=default).decode()
 
 
